@@ -1,0 +1,15 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"target": "es5",
+		"moduleResolution": "node",
+		"module": "esnext",
+		"noImplicitAny": false,
+		"noEmitHelpers": true,
+		"importHelpers": true,
+		"jsx": "react",
+		"lib": ["es2017", "dom", "dom.iterable", "es5", "es2015.promise"]
+	},
+	"allowSyntheticDefaultImports": true,
+	"exclude": ["node_modules", "packages"]
+}
