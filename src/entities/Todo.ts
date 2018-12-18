@@ -1,11 +1,15 @@
 export class Todo {
+	userId: number;
 	id: number;
-	content: string;
+	title: string;
+	completed: boolean;
 
 	constructor(dto?: Todo | any) {
 		dto = dto || ({} as Todo);
 
+		this.userId = dto.userId;
 		this.id = dto.id;
-		this.content = dto.content;
+		this.title = dto.content;
+		this.completed = dto.completed;
 	}
 }

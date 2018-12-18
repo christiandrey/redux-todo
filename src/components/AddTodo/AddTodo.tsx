@@ -15,19 +15,19 @@ export class AddTodo extends React.PureComponent<IAddTodoProps, IAddTodoState> {
 		super(props);
 
 		this.state = {
-			todo: new Todo()
+			todo: new Todo({
+				userId: 1
+			})
 		} as IAddTodoState;
 	}
 
 	handleChangeTodoContent(value: string) {
-		const todo = update(this.state.todo, { content: { $set: value } });
+		const todo = update(this.state.todo, { title: { $set: value } });
 		this.setState({ todo });
 	}
 
 	handleSubmit() {
-		const todo = this.state.todo;
-		todo.id = Math.ceil(Math.random() * 100);
-		this.props.addTodo(todo);
+		this.props.addTodo(this.state.todo);
 		this.handleChangeTodoContent(null);
 	}
 
@@ -39,13 +39,7 @@ export class AddTodo extends React.PureComponent<IAddTodoProps, IAddTodoState> {
 		const { todo } = this.state;
 		return (
 			<div className="add-todo">
-				<input
-					type="text"
-					autoFocus
-					value={todo.content || ""}
-					onChange={e => this.handleChangeTodoContent(e.target.value)}
-					onKeyPress={e => this.handleKeyPress(e.key)}
-				/>
+				<input type="text" autoFocus value={todo.title || ""} onChange={e => this.handleChangeTodoContent(e.target.value)} onKeyPress={e => this.handleKeyPress(e.key)} />
 				<button type="submit" onClick={() => this.handleSubmit()}>
 					Submit
 				</button>

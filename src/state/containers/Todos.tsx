@@ -1,17 +1,17 @@
-import { AnyAction } from "redux";
 import { IStoreState } from "../reducers";
 import { Todo } from "../../entities/Todo";
 import { Todos, ITodosProps } from "../../components/Todos/Todos";
 import { connect } from "react-redux";
-import { removeTodo } from "../actions";
+import { removeTodo, IStoreAction } from "../actions";
 
 const mapStateToProps: (state: IStoreState) => ITodosProps = state => {
 	return {
-		todos: state.todos
+		todos: state.todos,
+		isLoading: state.isLoading
 	} as ITodosProps;
 };
 
-const mapDispatchToProps: (dispatch: React.Dispatch<AnyAction>) => ITodosProps = dispatch => {
+const mapDispatchToProps: (dispatch: React.Dispatch<IStoreAction>) => ITodosProps = dispatch => {
 	return {
 		removeTodo: (todo: Todo) => dispatch(removeTodo(todo))
 	};
