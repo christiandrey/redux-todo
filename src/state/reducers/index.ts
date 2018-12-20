@@ -1,11 +1,12 @@
-import { Todo } from "../../entities/Todo";
-import { ActionTypes } from "../constants/actionTypes";
 import update from "immutability-helper";
+
+import { ActionTypes } from "../constants/actionTypes";
 import { IStoreAction } from "../actions";
+import { Todo } from "../../entities/Todo";
 
 export interface IStoreState {
-	todos: Array<Todo>;
-	isLoading?: boolean;
+	readonly todos: ReadonlyArray<Todo>;
+	readonly isLoading?: boolean;
 }
 
 const initialState: IStoreState = {
@@ -45,7 +46,7 @@ export function rootReducer(state = initialState, action: IStoreAction): IStoreS
 
 	if (type === ActionTypes.FETCH_TODO_SUCCESS) {
 		state = update(state, {
-			todos: { $unshift: [...payloadList] },
+			todos: { $unshift: payloadList },
 			isLoading: { $set: false }
 		});
 	}

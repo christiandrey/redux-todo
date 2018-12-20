@@ -1,8 +1,8 @@
-import { takeEvery, takeLatest, call, put } from "redux-saga/effects";
-import { ActionTypes } from "../constants/actionTypes";
-// import { IStoreAction, fetchTodosSuccess, fetchTodosFailure, addTodoSuccess, addTodoFailure, removeTodoSuccess, removeTodoFailure } from "../actions";
 import * as Actions from "../actions";
+
+import { ActionTypes } from "../constants/actionTypes";
 import { Api } from "../../api/api";
+import { takeEvery, takeLatest, call, put } from "redux-saga/effects";
 
 function* fetchTodos() {
 	try {
